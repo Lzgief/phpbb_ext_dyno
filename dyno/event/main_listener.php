@@ -20,50 +20,21 @@ class main_listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.user_setup'	=> 'load_language_on_setup',
-			'core.page_header'	=> 'add_page_header_link',
 //            'core.ucp_profile_modify_profile_info' => 'add_forum_on_event',
             'core.ucp_register_register_after' => 'add_forum_on_event',
 		);
 	}
-
-	/* @var \phpbb\controller\helper */
-	protected $helper;
-
-	/* @var \phpbb\template\template */
-	protected $template;
 
 	/* @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
     /**
      * Constructor
-     * @param \phpbb\controller\helper $helper Controller helper object
-     * @param \phpbb\template\template $template Template object
      * @param \phpbb\db\driver\driver_interface $db Driver Interface
      */
-	public function __construct( \phpbb\controller\helper $helper, \phpbb\template\template $template, \phpbb\db\driver\driver_interface $db )
+	public function __construct( \phpbb\db\driver\driver_interface $db )
 	{
-		$this->helper = $helper;
-		$this->template = $template;
         $this->db = $db;
-	}
-
-	public function load_language_on_setup($event)
-	{
-		$lang_set_ext = $event['lang_set_ext'];
-		$lang_set_ext[] = array(
-			'ext_name' => 'greg/dyno',
-			'lang_set' => 'common',
-		);
-		$event['lang_set_ext'] = $lang_set_ext;
-	}
-
-	public function add_page_header_link($event)
-	{
-		$this->template->assign_vars(array(
-			'U_DEMO_PAGE'	=> $this->helper->route('greg_dyno_controller', array('name' => 'foo')),
-		));
 	}
 
 	public function add_forum_on_event($event){

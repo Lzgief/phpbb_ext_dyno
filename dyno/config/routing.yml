@@ -1,3 +1,0 @@
-greg_dyno_controller:
-    path: /dyno/{name}
-    defaults: { _controller: greg.dyno.controller:handle }
