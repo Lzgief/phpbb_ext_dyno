@@ -1,0 +1,16 @@
+services:
+    greg.dyno.controller:
+        class: greg\dyno\controller\main
+        arguments:
+            - '@config'
+            - '@controller.helper'
+            - '@template'
+            - '@user'
+    greg.dyno.listener:
+        class: greg\dyno\event\main_listener
+        arguments:
+            - '@controller.helper'
+            - '@template'
+            - '@dbal.conn'
+        tags:
+            - { name: event.listener }
