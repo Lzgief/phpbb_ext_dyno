@@ -119,7 +119,7 @@ class main_listener implements EventSubscriberInterface
         );
 
         $sql = 'SELECT forum_name FROM ' . FORUMS_TABLE;
-        $result=$this->db->sql_query($sql);
+        $result = $this->db->sql_query($sql);
         $rows = $this->db->sql_fetchrowset($result);
         $this->db->sql_freeresult($result);
         $forum_exist = 0;
@@ -142,22 +142,21 @@ class main_listener implements EventSubscriberInterface
                 $copied_permissions = true;
             }
             $auth->acl_clear_prefetch();
-        }
-        else {
-            $sql = 'SELECT forum_id FROM ' . FORUMS_TABLE . ' WHERE ' . $this->db->sql_build_array('SELECT', array('forum_name' => $forum_name));
-            $result=$this->db->sql_query($sql);
-            $forum_data['forum_id'] = $this->db->sql_fetchrow($result);
+        } else {
+            $sql = "SELECT forum_id FROM ". FORUMS_TABLE ." WHERE forum_name = " . "'" . $forum_name ."'";
+            $result = $this->db->sql_query($sql);
+            $rows = $this->db->sql_fetchrowset($result);
+            $forum_data['forum_id'] = $rows[0]['forum_id'];
             $this->db->sql_freeresult($result);
         }
 
 
         $user_id = $event['user_id'];
 
-        $sql = 'INSERT INTO phpbb_acl_users ' . $this->db->sql_build_array('INSERT', array(
+        $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $this->db->sql_build_array('INSERT', array(
             'user_id'        => $user_id,
             'forum_id'       => $forum_data['forum_id'],
-            'auth_option_id' => 0,
-            'auth_setting'   => 0
+            'auth_role_id'   => 15
             ));
 
         $this->db->sql_query($sql);
