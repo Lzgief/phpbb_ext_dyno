@@ -20,7 +20,6 @@ class main_listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-//            'core.ucp_profile_modify_profile_info' => 'add_forum_on_event',
             'core.ucp_register_register_after' => 'add_forum_on_event',
 		);
 	}
@@ -49,7 +48,7 @@ class main_listener implements EventSubscriberInterface
 	    include ($phpbb_root_path . 'includes/functions_admin.' . $phpEx);
 
         $forum_data = array(
-            'parent_id'                => 0,  // Keep in mind that a category is also a parent!
+            'parent_id'                => 0,
             'forum_type'            => FORUM_POST,
             'type_action'            => '',
             'forum_status'            => ITEM_UNLOCKED,
@@ -104,13 +103,9 @@ class main_listener implements EventSubscriberInterface
             \acp_forums::update_forum_data($forum_data);
             global $cache;
             $cache->destroy('sql', FORUMS_TABLE);
-
             $forum_perm_from = 1;
-            $copied_permissions = false;
             if ($forum_perm_from) {
                 copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
-                cache_moderators();
-                $copied_permissions = true;
             }
             $auth->acl_clear_prefetch();
         } else {
