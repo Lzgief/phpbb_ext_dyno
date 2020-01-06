@@ -21,6 +21,7 @@ class main_listener implements EventSubscriberInterface
 	{
 		return array(
             'core.ucp_register_register_after' => 'add_forum_on_event',
+//            'user.user_setup' => 'shoutout',
 		);
 	}
 
@@ -268,4 +269,8 @@ class main_listener implements EventSubscriberInterface
         $this->db->sql_query($sql);
 
     }
+
+//    public function shoutout($in){
+//	    echo $in;
+//    }
 }
