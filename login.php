@@ -89,7 +89,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
         'forum_name'            => $forum_name,
         'forum_link'            => '',
         'forum_link_track'        => false,
-        'forum_desc'            => '',  // Description, if you want to add one
+        'forum_desc'            => '',  
         'forum_desc_uid'        => '',
         'forum_desc_options'    => 7,
         'forum_desc_bitfield'    => '',
@@ -141,12 +141,13 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
             copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
         }
         $auth->acl_clear_prefetch();
+		$forum_parent_id = $forum_data['forum_id'];
         global $cache, $auth;
         for($i = 1; $i <= 7; $i++) {
             switch ($i) {
                 case 1:
                     $forum_data = array(
-                        'parent_id'                => $forum_data['forum_id'],
+                        'parent_id'                => $forum_parent_id,
                         'forum_type'            => FORUM_POST,
                         'type_action'            => '',
                         'forum_status'            => ITEM_UNLOCKED,
@@ -185,9 +186,12 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                         'forum_options'=> 0,
                         'show_active'=> true,
                     );
+					//$forum_data['parent_id'] = $forum_data['forum_id'];
+					//$forum_data['forum_name'] = 'Нужен совет или помощь';
+					//$forum_data['forum_desc'] = 'Здесь вы можете получить совет или помощь по какому-нибудь вопросу.';
                     \acp_forums::update_forum_data($forum_data);
                     $cache->destroy('sql', FORUMS_TABLE);
-                    $forum_perm_from = $forum_data['forum_id'];
+                    $forum_perm_from = $forum_parent_id;
                     if ($forum_perm_from) {
                         copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
                     }
@@ -201,8 +205,8 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $db->sql_query($sql);
                     break;
                 case 2:
-                    $forum_data = array(
-                        'parent_id'                => $forum_data['forum_id'],
+					$forum_data = array(
+                        'parent_id'                => $forum_parent_id,
                         'forum_type'            => FORUM_POST,
                         'type_action'            => '',
                         'forum_status'            => ITEM_UNLOCKED,
@@ -243,7 +247,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     );
                     \acp_forums::update_forum_data($forum_data);
                     $cache->destroy('sql', FORUMS_TABLE);
-                    $forum_perm_from = $forum_data['forum_id'];
+                    $forum_perm_from = $forum_parent_id;
                     if ($forum_perm_from) {
                         copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
                     }
@@ -258,7 +262,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     break;
                 case 3:
                     $forum_data = array(
-                        'parent_id'                => $forum_data['forum_id'],
+                        'parent_id'                => $forum_parent_id,
                         'forum_type'            => FORUM_POST,
                         'type_action'            => '',
                         'forum_status'            => ITEM_UNLOCKED,
@@ -299,7 +303,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     );
                     \acp_forums::update_forum_data($forum_data);
                     $cache->destroy('sql', FORUMS_TABLE);
-                    $forum_perm_from = $forum_data['forum_id'];
+                    $forum_perm_from = $forum_parent_id;
                     if ($forum_perm_from) {
                         copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
                     }
@@ -314,7 +318,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     break;
                 case 4:
                    $forum_data = array(
-                        'parent_id'                => $forum_data['forum_id'],
+                        'parent_id'                => $forum_parent_id,
                         'forum_type'            => FORUM_POST,
                         'type_action'            => '',
                         'forum_status'            => ITEM_UNLOCKED,
@@ -355,7 +359,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     );
                     \acp_forums::update_forum_data($forum_data);
                     $cache->destroy('sql', FORUMS_TABLE);
-                    $forum_perm_from = $forum_data['forum_id'];
+                    $forum_perm_from = $forum_parent_id;
                     if ($forum_perm_from) {
                         copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
                     }
@@ -370,7 +374,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     break;
                 case 5:
                     $forum_data = array(
-                        'parent_id'                => $forum_data['forum_id'],
+                        'parent_id'                => $forum_parent_id,
                         'forum_type'            => FORUM_POST,
                         'type_action'            => '',
                         'forum_status'            => ITEM_UNLOCKED,
@@ -411,7 +415,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     );
                     \acp_forums::update_forum_data($forum_data);
                     $cache->destroy('sql', FORUMS_TABLE);
-                    $forum_perm_from = $forum_data['forum_id'];
+                    $forum_perm_from = $forum_parent_id;
                     if ($forum_perm_from) {
                         copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
                     }
@@ -426,7 +430,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     break;
                 case 6:
                     $forum_data = array(
-                        'parent_id'                => $forum_data['forum_id'],
+                        'parent_id'                => $forum_parent_id,
                         'forum_type'            => FORUM_POST,
                         'type_action'            => '',
                         'forum_status'            => ITEM_UNLOCKED,
@@ -467,7 +471,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     );
                     \acp_forums::update_forum_data($forum_data);
                     $cache->destroy('sql', FORUMS_TABLE);
-                    $forum_perm_from = $forum_data['forum_id'];
+                    $forum_perm_from = $forum_parent_id;
                     if ($forum_perm_from) {
                         copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
                     }
@@ -482,7 +486,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     break;
                 case 7:
                     $forum_data = array(
-                        'parent_id'                => $forum_data['forum_id'],
+                        'parent_id'                => $forum_parent_id,
                         'forum_type'            => FORUM_POST,
                         'type_action'            => '',
                         'forum_status'            => ITEM_UNLOCKED,
@@ -523,7 +527,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     );
                     \acp_forums::update_forum_data($forum_data);
                     $cache->destroy('sql', FORUMS_TABLE);
-                    $forum_perm_from = $forum_data['forum_id'];
+                    $forum_perm_from = $forum_parent_id;
                     if ($forum_perm_from) {
                         copy_forum_permissions($forum_perm_from, $forum_data['forum_id'], false);
                     }
@@ -538,6 +542,13 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     break;
             }
         }
+		 $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
+            'user_id'        => $user_id,
+            'forum_id'       => $forum_parent_id,
+            'auth_role_id'   => 15
+        ));
+
+    $db->sql_query($sql);
     } else {
         $sql = "SELECT forum_id FROM ". FORUMS_TABLE ." WHERE forum_name = " . "'" . $forum_name ."'";
         $result = $db->sql_query($sql);
@@ -611,14 +622,15 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     break;
             }
         }
-    }
-    $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
+		$sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
             'user_id'        => $user_id,
             'forum_id'       => $forum_data['forum_id'],
             'auth_role_id'   => 15
         ));
 
-    $db->sql_query($sql);;
+    $db->sql_query($sql);
+    }
+   
 }
 
 // Send headers
