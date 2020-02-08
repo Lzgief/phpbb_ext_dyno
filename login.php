@@ -82,7 +82,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
 
     $forum_data = array(
         'parent_id'                => 0,
-        'forum_type'            => FORUM_POST,
+        'forum_type'            => FORUM_CAT,
         'type_action'            => '',
         'forum_status'            => ITEM_UNLOCKED,
         'forum_parents'            => '',
@@ -199,7 +199,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id'],
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -255,7 +255,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id'],
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -311,7 +311,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id'],
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -367,7 +367,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id'],
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -423,7 +423,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id'],
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -479,7 +479,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id'],
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -535,7 +535,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id'],
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -561,7 +561,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id']+1,
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -570,7 +570,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id']+2,
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -579,7 +579,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id']+3,
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -588,7 +588,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id']+4,
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -597,7 +597,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id']+5,
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -606,7 +606,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id']+6,
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -615,7 +615,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
                     $sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
                             'user_id'        => $user_id,
                             'forum_id'       => $forum_data['forum_id']+7,
-                            'auth_role_id'   => 15
+                            'auth_role_id'   => 21
                         ));
 
                     $db->sql_query($sql);
@@ -625,7 +625,7 @@ if(isset($_POST['register']) && $user->data['user_id'] == ANONYMOUS)
 		$sql = 'INSERT INTO ' . ACL_USERS_TABLE  . $db->sql_build_array('INSERT', array(
             'user_id'        => $user_id,
             'forum_id'       => $forum_data['forum_id'],
-            'auth_role_id'   => 15
+            'auth_role_id'   => 21
         ));
 
     $db->sql_query($sql);
