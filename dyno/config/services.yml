@@ -1,0 +1,7 @@
+services:
+    greg.dyno.listener:
+        class: greg\dyno\event\main_listener
+        arguments:
+            - '@dbal.conn'
+        tags:
+            - { name: event.listener }
